@@ -1,0 +1,56 @@
+<div class="container">
+    <div  class="flex">
+        <mat-card>
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h2>Login</h2>
+                <!-- <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                </mat-form-field> -->
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+                <button type="submit" mat-raised-button color="primary">Login</button>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+
+<!-- <div class="container vh-100">
+    <div class="row justify-content-center h-100">
+        <div class="card my-auto shadow">
+            <div class="card-body px-5">
+                <div class="text-center">
+                    <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+                </div>
+                <div class="text-center">
+                    <h2>Welcome</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please enter your login
+                    details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" class="form-control" formControlName="email"
+                            name="email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" class="form-control"
+                            formControlName="password" name="password" />
+                    </div>
+                    <input type="submit" class="btn btn-primary w-100" value="Login" name="">
+                </form>
+            </div>
+            <div class="card-footer text-right">
+                <small><a routerLink="../forgot-password">Forgot Password</a></small>
+            </div>
+        </div>
+    </div>
+</div> -->
+

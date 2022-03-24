@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.flex {    
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .flex-inner{
+        display: flex;
+        // border: 2px solid black;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .section-1 > div{
+        margin: 2em 0;
+    }
+
+    .section-2 > img {
+        width: 80%;
+        // background-color: aquamarine;
+        float: right;
+    }
+}
+.button ::ng-deep{
+    width: 100% !important;
+}

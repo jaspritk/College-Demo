@@ -1,0 +1,147 @@
+<div class="container">
+    <app-header></app-header>
+
+    
+    <div class="header">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="gotoHome()">
+            <mat-icon>arrow_left</mat-icon>
+        </button>
+        <h2>Student List</h2>
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="gotoForm()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <mat-divider></mat-divider>
+    <br>
+    <!-- Expansion List -->
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                Filter / Search
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <form class="example-form" [formGroup]="studentFilter">
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Enrollment No.</mat-label>
+                                <input matInput >
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+    
+                <div class="btn-group">
+                    <button type="button" mat-raised-button color="primary">Search</button>
+                    <button type="button" mat-raised-button>Cancel</button>
+                </div>
+            </form>
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+    <!-- Table -->
+    
+    <div class="mat-elevation-z8">
+        <table mat-table #studentTableList [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="enroll">
+              <th mat-header-cell *matHeaderCellDef> Enrollment No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.enroll}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dept">
+              <th mat-header-cell *matHeaderCellDef> Department </th>
+              <td mat-cell *matCellDef="let element"> {{element.dept}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="sem">
+                <th mat-header-cell *matHeaderCellDef> Semester </th>
+                <td mat-cell *matCellDef="let element"> {{element.sem}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="batch">
+              <th mat-header-cell *matHeaderCellDef> Batch </th>
+              <td mat-cell *matCellDef="let element"> {{element.batch}} </td>
+            </ng-container>
+
+            <!-- (click)="editOwnerDetails(i)" -->
+            <ng-container matColumnDef="Edit">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <button mat-icon-button type="button" (click)="editRecord(element.id)"
+                        color="primary" aria-label="Edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Delete">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <button mat-icon-button type="button" (click)="deleteRecord(element.id)"
+                        color="warn" aria-label="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+    
+                    <button mat-icon-button class="pointer" color="primary" matTooltip="Edit" type="button" >
+                        <mat-icon>edit</mat-icon>
+                    </button>
+
+                    <button mat-icon-button type="button" color="warn" aria-label="Delete" (click)="deleteRecord(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container> -->
+    
+            <!-- <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <button mat-icon-button type="button" color="primary" aria-label="Edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <button mat-icon-button type="button" color="warn" aria-label="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container> -->
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    
+        <mat-paginator  [pageSizeOptions]="[5, 10]" aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>
