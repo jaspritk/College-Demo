@@ -1,0 +1,38 @@
+[
+    {
+        "enroll": 18012011094,
+        "name": "Jasprit Kaur",
+        "phone": 7228048035,
+        "dept": "CE",
+        "sem": 8,
+        "batch": "AB2",
+        "id": 1
+    },
+    {
+        "enroll": 18012011095,
+        "name": "Gaurav Sagar",
+        "phone": 9426552506,
+        "dept": "CSE",
+        "sem": 8,
+        "batch": "B4",
+        "id": 2
+    },
+    {
+        "enroll": 18012011099,
+        "name": "Kajal",
+        "phone": 989825632,
+        "dept": "CE",
+        "sem": 8,
+        "batch": "AB3",
+        "id": 3
+    },
+    {
+        "enroll": 18012011098,
+        "name": "Tarak Kadiya",
+        "phone": 954887757,
+        "dept": "CE",
+        "sem": 8,
+        "batch": "AB2",
+        "id": 4
+    }
+]

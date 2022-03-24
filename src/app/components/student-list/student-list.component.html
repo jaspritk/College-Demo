@@ -29,21 +29,21 @@
                         <td>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Enrollment No.</mat-label>
-                                <input matInput >
+                                <input matInput formControlName="enroll">
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Name</mat-label>
-                                <input matInput>
+                                <input matInput formControlName="name">
                             </mat-form-field>
                         </td>
                     </tr>
                 </table>
     
                 <div class="btn-group">
-                    <button type="button" mat-raised-button color="primary">Search</button>
-                    <button type="button" mat-raised-button>Cancel</button>
+                    <button type="button" (click)="applyFilter()" mat-raised-button color="primary">Search</button>
+                    <button type="button" (click)="studentFilter.reset()" mat-raised-button>Cancel</button>
                 </div>
             </form>
         </mat-expansion-panel>
@@ -139,9 +139,19 @@
     
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell text-center-bold" colspan="8">
+                    <ng-container *ngIf="studentFilter.controls['enroll'].value !== '' || studentFilter.controls['name'].value !== ''">
+                        No data found with matching filters
+                    </ng-container>
+                    <ng-container *ngIf="studentFilter.controls['enroll'].value === '' && studentFilter.controls['name'].value === ''">
+                        Please add record(s)
+                    </ng-container>
+                </td>
+            </tr>
         </table>
     
-        <mat-paginator  [pageSizeOptions]="[5, 10]" aria-label="Select page">
+        <mat-paginator [length]="dataSource.length" [pageSize]="5" [pageSizeOptions]="[5, 10]" aria-label="Select page">
         </mat-paginator>
     </div>
 </div>

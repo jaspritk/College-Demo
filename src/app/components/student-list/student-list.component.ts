@@ -5,6 +5,8 @@ import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angula
 import { CommonService } from 'src/app/common.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { CdkRowDef } from '@angular/cdk/table';
+import student from '../../../app/student.json';
+
 
 @Component({
   selector: 'app-student-list',
@@ -15,7 +17,9 @@ import { CdkRowDef } from '@angular/cdk/table';
 export class StudentListComponent implements OnInit, AfterViewInit {
 
   studentFilter!: FormGroup;
-  dataSource!: Array<any>
+  students!: Array<any>;
+  dataSource!: Array<any>;
+  mainDataSource: Array<any> = [];
   displayedColumns: string[] = ['enroll', 'name', 'phone', 'dept', 'sem', 'batch', 'Edit', 'Delete'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -35,7 +39,9 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       console.log("routeData : ", routeData);
       this.commonService.setPageTitle(routeData['title']);
     });
+
     this.dataSource = this.commonService.getUserData();
+    this.mainDataSource = JSON.parse(JSON.stringify(this.dataSource));
     console.log(" this.Jasprit", this.commonService.getUserData());
   }
 
@@ -62,10 +68,10 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     })
   }
 
-  applyFilter(filterValue: any) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  applyFilter() {
+    const { enroll, name } = this.studentFilter.getRawValue();
+    this.dataSource = this.mainDataSource.filter(el => el.enroll.toString().includes(enroll) && el.name.includes(name));
+    this.studentTableList.renderRows();
   }
 
 
